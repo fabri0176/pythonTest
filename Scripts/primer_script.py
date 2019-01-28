@@ -7,3 +7,6 @@ if(len(sys.argv) > 0): # valida si hay argumentos
     for argumento in sys.argv:
         print('#'+str(i) + " Argumento = "+ argumento)
         i += 1
+    
+if x == 1 s
+    print(x

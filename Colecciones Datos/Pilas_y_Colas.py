@@ -35,3 +35,12 @@ print(cola)
 while len(cola) > 0:
     salio = cola.popleft()
     print("Salio del turno: "+salio)
+
+
+
+
+
+
+
+
+
