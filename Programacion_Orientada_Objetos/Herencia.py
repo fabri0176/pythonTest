@@ -42,8 +42,8 @@ ISBN\t\t\t{}
 AUTOR\t\t\t{}""".format(self.referencia, self.nombre, self.pvp,self.descripcion, self.isbn, self.autor)
 
 
-a = Adorno(2034,"Vaso adornado",15,"Vaso de porcelana adornado con árboles")
-print(a)
+ad = Adorno(2034,"Vaso adornado",15,"Vaso de porcelana adornado con árboles")
+print(ad)
 
 a1 = Alimento(2034,"Botella Aceita Extra",5,"250 ML")
 a1.productor = "La Aceitera"
@@ -57,4 +57,50 @@ l1.isbn = "44455259"
 print(l1)
 
 
+
+productos = [a1,ad]
+productos.append(l1)
+
+print(productos)
+
+for producto in productos:
+    print("-------------------------------")
+    print("Producto:",type(producto))
+    print(producto)
+
+for producto in productos:
+
+    print("-------------------------------")
+
+    if(isinstance(producto,Adorno)):
+        print(producto.referencia,producto.nombre)
+    elif( isinstance(producto,Alimento) ):
+        print(producto.referencia,producto.nombre,producto.productor)
+    elif( isinstance(producto,Libro) ):
+        print(producto.referencia, producto.nombre, producto.isbn)
+print("-------------------------------")
+print("-------------------------------")
+
+def rebajar_producto(p,rebaja):
+    """Devuelve un producto con una rebaja en porcentaje de su precio"""
+
+    p.pvp = p.pvp -(p.pvp/100 * rebaja)
+
+    return p
+
+al_rebajado = rebajar_producto(ad,60)
+print(al_rebajado)
+print("-------------------------------")
+print("-------------------------------")
+print(ad)
+
+copia_ad = ad
+
+l = [1,2,3]
+l2 = l
+#Los objetos se pasan por referencia
+import  copy
+
+copia_ad = copy.copy(ad)
+print(copia_ad)
 
