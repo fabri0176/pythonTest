@@ -25,3 +25,29 @@ d = defaultdict(object,{'algo':'hoy'})
 print(d['algo'])
 
 print(d['despues'])
+
+dListaDefecto = defaultdict(int)
+print(dListaDefecto['33434'])
+
+n = {}
+n['dos'] = 'two'
+n['uno'] = 'one'
+n['tres'] = 'tree'
+
+from  collections import OrderedDict
+
+print(OrderedDict(n))
+
+from  collections import namedtuple
+Persona = namedtuple('Persona','nombre apellido edad')
+p = Persona(nombre="Hector",apellido="Costa",edad=27)
+print("================================")
+print(p.nombre)
+print(p.apellido)
+print(p.edad)
+print("================================")
+print(p[0])
+print(p.apellido)
+print(p.edad)
+print("================================")
+
