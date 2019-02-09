@@ -34,7 +34,7 @@ class Catalogo:
             print(p)
 
     def cargar(self):
-        fichero = open('catalogo.pckl', 'ab+')
+        fichero = open('Catogo_Peliculas_Persistente/ficheros/catalogo.pckl', 'ab+')
         fichero.seek(0)
         try:
             self.peliculas = pickle.load(fichero)
@@ -45,7 +45,17 @@ class Catalogo:
             print("Se han cargado {} películas".format(len(self.peliculas)))
 
     def guardar(self):
-        fichero = open('catalogo.pckl', 'wb')
+        fichero = open('Catogo_Peliculas_Persistente/ficheros/catalogo.pckl', 'wb')
         pickle.dump(self.peliculas, fichero)
         fichero.close()
+
+
+
+c = Catalogo()
+c.agregar(Pelicula("El Padrino", 175,1972))
+c.agregar(Pelicula("El padrino 2",202,1974))
+
+c.mostrar()
+
+
 
