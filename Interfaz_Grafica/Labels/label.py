@@ -11,7 +11,7 @@ label.pack(anchor="center")
 label.config(bg="green",fg="blue",font="Verdana")
 label.config(textvariable=texto)
 
-image = PhotoImage(file="images/image")
+image = PhotoImage(file="images/image.gif.gif")
 Label(root, image=image,bd=0).pack(side="left")
 
 root.mainloop()
