@@ -306,6 +306,6 @@ print(res)
 print("======================================================================")
 print("Permutaciones")
 from itertools import *
-lista = list(permutations([2,6,8,9]))
+lista = list(permutations([0,7,2,9]))
 print(len(lista))
 print(lista)

@@ -18,3 +18,18 @@ tupla.count(100) # verificar si esta en la tupla
 
 tupla.count('Algo') # Verificar si esta en la tupla
 
+print("=============================================")
+tupla_3 = (1,)
+print(tupla_3)
+print("=============================================")
+
+
+try:
+    tupla_3[1]
+except IndexError:
+    try:
+        tupla_3[1] = 0
+    except TypeError:
+        print("Error")
+
+print(tupla_3[1])
