@@ -276,11 +276,11 @@ resultados.sort()
 resultados2 = []
 
 for resultado in resultados:
-    print(resultado)
+
     x = [int(numero) for numero in list(resultado)]
-    print(x)
+
     x.sort()
-    print(x)
+
     resultados2.append(''.join(map(str, x)))
 
 
@@ -289,7 +289,7 @@ mas_salen = {}
 
 resultados2.sort()
 
-print(resultados2)
+
 
 for resultado in resultados2:
     try:
@@ -303,7 +303,9 @@ for resultado in resultados2:
 res = sorted(mas_salen.items(), key=operator.itemgetter(1))
 res.reverse()
 print(res)
-
+print("======================================================================")
+print("Permutaciones")
 from itertools import *
 lista = list(permutations([2,6,8,9]))
+print(len(lista))
 print(lista)
