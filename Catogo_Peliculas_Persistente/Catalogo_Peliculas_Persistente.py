@@ -52,10 +52,7 @@ class Catalogo:
 
 
 c = Catalogo()
-c.agregar(Pelicula("El Padrino", 175,1972))
-c.agregar(Pelicula("El padrino 2",202,1974))
+c.agregar(Pelicula("El Padrino", 175, 972))
+c.agregar(Pelicula("El padrino 2", 202, 1974))
 
 c.mostrar()
-
-
-
