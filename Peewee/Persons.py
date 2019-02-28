@@ -1,9 +1,11 @@
 from peewee import *
+from datetime import date
+import uuid
+
 
 db = SqliteDatabase('people.db')
 
 class Person(Model):
-    id = UUIDField(primary_key=True)
     name = CharField()
     birthday = DateField()
     is_relative = BooleanField()
@@ -25,3 +27,9 @@ def create_and_connect():
     db.create_tables([Person, Pet], safe = True)
 
 create_and_connect()
+
+def create_family_members():
+    UncleTommy = Person(name="Tommy",birthday=date(1991,3,10),is_relative=True)
+    UncleTommy.save()
+
+create_family_members()
