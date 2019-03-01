@@ -54,9 +54,23 @@ def get_family_member():
 
     try:
         grandma = Person.select().where(Person.id == 6).get()
+        print(grandma)
         print("Existe el registro {}".format(grandma.name))
     except:
         print("No existe el registro")
 
+    try:
+        persona = Person.select().where(Person.name == 'TommyConcatena').get()
+        print("Existe el registro {}".format(persona.name))
+    except:
+        print("No existe el registro 2")
+
 get_family_member()
 
+
+def delete_pet(name):
+    query = Pet.delete().where(Pet.name==name)
+    deleted_entries = query.execute()
+    print("{} Registros Borrados".format(deleted_entries))
+
+delete_pet("Asly")
