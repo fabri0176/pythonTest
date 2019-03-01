@@ -15,7 +15,7 @@ class Person(Model):
 
 
 class Pet(Model):
-    omner = ForeignKeyField(Person, related_name='pets')
+    owner = ForeignKeyField(Person, related_name='pets')
     name = CharField()
     animal_type = CharField()
 
@@ -32,4 +32,31 @@ def create_family_members():
     UncleTommy = Person(name="Tommy",birthday=date(1991,3,10),is_relative=True)
     UncleTommy.save()
 
-create_family_members()
+    Madre = Person(name = "Luz Marina",birthday=date(1968,5,19),is_relative = True)
+    Madre.save()
+
+    tommys_dog = Pet.create(owner = UncleTommy, name ="Fido", animal_type = "Gato")
+    anas_cat = Pet.create(owner=Madre,name="Asly",animal_type="Gato")
+
+    tommys_dog.name = 'Firulais'
+    tommys_dog.save()
+
+def get_family_pets():
+    for person in Person.select():
+        if(person.id is not None):
+            person.name += "Concatena"
+            person.save()
+
+# get_family_pets()
+# create_family_members()
+
+def get_family_member():
+
+    try:
+        grandma = Person.select().where(Person.id == 6).get()
+        print("Existe el registro {}".format(grandma.name))
+    except:
+        print("No existe el registro")
+
+get_family_member()
+
