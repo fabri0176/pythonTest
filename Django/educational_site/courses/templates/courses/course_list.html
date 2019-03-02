@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cursos Registrados</title>
+</head>
+<body>
+<table>
+    {% for course in courses %}
+    <tr>
+        <td><strong>ID:</strong></td>
+        <td>{{ course.id }}</td>
+    </tr>
+    <tr>
+        <td><strong>Nombre:</strong></td>
+        <td>{{ course.name }}</td>
+    </tr>
+    <tr>
+        <td><strong>Descripción:</strong></td>
+        <td>{{ course.description }}</td>
+    </tr>
+    <tr>
+        <td><strong>Fecha Creación:</strong></td>
+        <td>{{ course.create_at }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
