@@ -1,11 +1,12 @@
-from flask import Flask
-from flask import Request
-from flask import render_template
+from flask import Flask, request, render_template, url_for, redirect
+import json
 
+# Ejecutar en consola ming64
 # export FLASK_ENV=development
 # FLASK_APP=hello.py flask run
 
 app = Flask(__name__)
+
 
 # http://localhost:5000/Nestor
 @app.route('/')
@@ -16,6 +17,12 @@ def hello(nombre="Invitado", apellidos=""):
         'nombre': nombre,
         'apellidos': apellidos
     }
+
+    if request.cookies.get('data'):
+        cookieData = json.loads(request.cookies.get('data'))
+        if cookieData.get('nombre'):
+            data['nombre'] = cookieData.get('nombre')
+
     return render_template('index.html', **data)
 
 
@@ -33,6 +40,7 @@ def hola_mundo():
 def multiplicar():
     return "multiplicar2s"
 
+
 # http://localhost:5000/sumar?num1=3&num2=2323
 @app.route("/sumar")
 def sumar(num1=0, num2=0):
@@ -40,7 +48,7 @@ def sumar(num1=0, num2=0):
         num1 = int(request.args.get('num1', num1))
     except ValueError:
         num1 = 0
-    
+
     try:
         num2 = int(request.args.get('num2', num2))
     except ValueError:
@@ -49,6 +57,7 @@ def sumar(num1=0, num2=0):
     result = num1 + num2
 
     return "{} + {} = {}".format(num1, num2, result)
+
 
 # http://localhost:5000/sumar2/455/555
 @app.route("/sumar2/<int:num1>/<int:num2>")
@@ -63,7 +72,6 @@ def sumar2(num1=0, num2=0):
 @app.route("/sumar3/<int:num1>/<int:num2>")
 @app.route("/sumar3/<float:num1>/<float:num2>")
 def sumar3(num1=0, num2=0):
-
     resultado = num1 + num2
     return """
 <!doctype html>
@@ -90,6 +98,24 @@ def sumar4(num1=0, num2=0):
     }
     return render_template("suma.html", **data)
 
+
+# http://localhost:5000/contacto/
+@app.route("/contacto")
+def contacto(nombre='', email='', comentario=''):
+    data = {
+        'nombre': nombre,
+        'email': email,
+        'comentario': comentario
+    }
+    return render_template("contacto.html", **data)
+
+
+# http://localhost:5000/enviar/
+@app.route("/enviar", methods=['POST'])
+def enviar():
+    response = redirect(url_for("hello"))
+    response.set_cookie('data', json.dumps(dict(request.form.items())))
+    return response
 
 
 if __name__ == "__main___":
