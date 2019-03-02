@@ -14,6 +14,7 @@ class Entry(Model):
     # timestamp
     content = TextField()
     timestamp = DateTimeField(default=datetime.datetime.now())
+
     class Meta:
         database = db
 
@@ -59,13 +60,16 @@ def view_entries():
 
         if next_action == 'q':
             break
+
+             
 def delete_entry(entry):
     """Delete an Entry"""
 
+
 menu = OrderedDict([
-    ('a',add_entry),
-    ('v',view_entries),
-    ('d',delete_entry)
+    ('a', add_entry),
+    ('v', view_entries),
+    ('d', delete_entry)
 ])
 
 
