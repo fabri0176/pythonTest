@@ -11,4 +11,3 @@ for letra in lista_1:
         lista_3.append(letra)
 
 print(lista_3)
-    
