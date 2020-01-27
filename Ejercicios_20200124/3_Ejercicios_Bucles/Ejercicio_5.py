@@ -3,9 +3,15 @@
 invertir, el interés anual y el número de años, y muestre por
 pantalla el capital obtenido en la inversión cada año que dura la inversión.
 """
-amountInvested = int(input("Enter amount Invested:\t"))
-
+amountInvested = float(input("Enter amount Invested:\t"))
+interest = float(input("Enter Interest (0%-100%):\t"))
+years = int(input("Enter number years:\t"))
+capital = 0
 if amountInvested > 0:
-    print("SUCCES")
+    for year in range(years+1):
+        capital = amountInvested * (interest /  100)
+        amountInvested += capital
+        print("Capital first year {} is {}".format(year, round(amountInvested,2)))
 else:
-    print("ERROR")
+    print("Error no valid number")
+
