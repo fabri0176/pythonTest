@@ -8,5 +8,3 @@ if(len(sys.argv) > 0): # valida si hay argumentos
         print('#'+str(i) + " Argumento = "+ argumento)
         i += 1
     
-if x == 1 s
-    print(x
